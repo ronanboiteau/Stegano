@@ -46,25 +46,19 @@ def lang_choose():
     Button(FRAME, text="Quit / Quitter", command=WIN.destroy, width=30).grid(row=5)
 
 def callback_lang_set_fr():
-    """ If french is chosen """
+    """ If French is chosen """
     global LANG
     LANG = "FR"
     callback_show_index()
 
-def callback_lang_set_es():
-    """ If spanish is chosen """
-    global LANG
-    LANG = "ES"
-    callback_show_index()
-
 def callback_lang_set_en():
-    """ If english is chosen """
+    """ If English is chosen """
     global LANG
     LANG = "EN"
     callback_show_index()
 
 def _(string):
-    """ Function that return the translation of a string according to the user's language choice """
+    """ Function that returns the translation of a string according to the user's language choice """
     frTranslations = {"Welcome!" : "Bienvenue !", "What can I do for you?" : "Que puis-je faire pour vous ?", "Hide a string in an image" : "Cacher une phrase dans une image", "Retrieve a string from an image" : "Retrouver une phrase dans une image", "Retrieve a string hidden\nwith Stegano 1.X" : "Retrouver une phrase cachée\navec Stegano version 1.X", "Back" : "Retour", "Quit" : "Quitter", "Sure! First let's choose the picture" : "D'accord ! Commencez par choisir l'image", "wherein your string will be hidden" : "dans laquelle votre phrase sera cachée", "GO!" : "C'est parti !", "Bitmap pictures" : "Images bitmap", "Choose a bitmap picture (.bmp)" : "Choisir une image bitmap (.bmp)", "OK! Just choose your picture" : "D'accord ! Choisissez seulement votre", "and I'll find the hidden string" : "image et je trouverai la phrase cachée", "You have to choose a bitmap picture!" : "Vous devez choisir une image bitmap !", "Perfect! What do you want me" : "Parfait ! Que voulez-vous que je", "to hide in this picture?" : "cache dans cette image ?", "Please check the informations" : "Merci de vérifier les informations", "below, then click \"GO!\" or \"Back\" if" : "ci-dessous puis cliquez sur \"C'est parti\"", "you want to correct something" : "ou \"Retour\" pour corriger", "Path to your picture:" : "Chemin de votre l'image :", "String:" : "Phrase :", "Thumbnail of your picture:" : "Miniature de votre image :", "You have to enter something to hide!" : "Vous devez rentrer une phrase à cacher !", "Your image is too small to hide such a\nlong string! Please go back and choose\nanother picture or a smaller string!" : "Votre image est trop petite pour cacher\ncette phrase ! Merci de revenir en\narrière pour choisir une autre\nimage ou une phrase plus courte !", "Your new picture with your\nstring hidden inside is ready!\nYou can find it there on your computer:" : "Votre nouvelle image avec\nvotre phrase cachée dedans est prête !\nVous la trouverez ici sur votre ordinateur :" , "Again" : "Recommencer", "_new.bmp" : "_nouveau.bmp", "String decrypted!\nHere is what I found in your picture:" : "Phrase décryptée !\nVoici ce que j'ai trouvé dans votre image :", "String saved!\nYou can find it here on your computer:" : "Phrase sauvegardée !\nVous la trouverez ici sur votre ordinateur :", "_string.txt" : "_phrase.txt", "Save string to computer" : "Sauvegarder sur mon ordinateur", "Might take a few minutes" : "Peut prendre quelques minutes", "About license..." : "À propos de la licence...", "This program comes with\nABSOLUTELY NO WARRANTY;\nfor details read LICENSE.txt file." : "Ce programme est fourni\nSANS AUCUNE GARANTIE;\npour plus de détails, lisez le\nfichier LICENSE.txt (en anglais).", "This is free software, and you\nare welcome to redistribute\nit under certain conditions;\nread LICENSE.txt file for details." : "Ceci est un programme gratuit, et\nvous êtes invité à le redistribuer\nsous certaines conditions; lisez\nle fichier LICENSE.txt (en anglais)\npour plus de détails."}
     if LANG == "FR":
         try:
@@ -82,14 +76,13 @@ def callback_show_index():
     Button(FRAME, text=_("Hide a string in an image"), command=callback_hide, width=30).grid(row=2, column=0, columnspan=2)
     Button(FRAME, text=_("Retrieve a string from an image"), command=callback_retrieve, width=30).grid(row=3, column=0, columnspan=2)
     Label(FRAME, text="").grid(row=4, column=0, columnspan=2)
-    Button(FRAME, text=_("Retrieve a string hidden\nwith Stegano 1.X"), command=callback_older_version, width=30).grid(row=5, column=0, columnspan=2)
-    Button(FRAME, text=_("About license..."), command=callback_about, width=30).grid(row=6, column=0, columnspan=2)
-    Label(FRAME, text="").grid(row=7, column=0, columnspan=2)
-    Button(FRAME, text=_("Back"), command=lang_choose, width=13).grid(row=8, column=0)
-    Button(FRAME, text=_("Quit"), command=WIN.destroy, width=13).grid(row=8, column=1)
+    Button(FRAME, text=_("About license..."), command=callback_about, width=30).grid(row=5, column=0, columnspan=2)
+    Label(FRAME, text="").grid(row=6, column=0, columnspan=2)
+    Button(FRAME, text=_("Back"), command=lang_choose, width=13).grid(row=7, column=0)
+    Button(FRAME, text=_("Quit"), command=WIN.destroy, width=13).grid(row=7, column=1)
 
 def callback_about():
-    """ Display informations about license """
+    """ Display information about license """
     clean_frame()
     Label(FRAME, text="\n" + "Stegano " + VERSION + " Copyright (C) 2015\nRonan Boiteau & Cyprien Andres").grid(row=0, column=0, columnspan=2)
     Label(FRAME, text=_("This program comes with\nABSOLUTELY NO WARRANTY;\nfor details read LICENSE.txt file.")).grid(row=1, column=0, columnspan=2)
@@ -118,7 +111,7 @@ def callback_retrieve():
     Button(FRAME, text=_("Quit"), command=WIN.destroy, width=13).grid(row=4, column=1)
 
 def callback_request_pic_hide():
-    """ Opens file browser for the user to select a picture and then check if the image is in Bitmap format """
+    """ Opens file browser for the user to select a picture and then checks the file extension """
     global PIC
     PIC = str(askopenfilename(title=_("Choose a bitmap picture (.bmp)"), filetypes=[(_('Bitmap pictures'),'.bmp')]))
     if PIC.endswith(".bmp"):
@@ -128,7 +121,7 @@ def callback_request_pic_hide():
         Label(FRAME, text=_("You have to choose a bitmap picture!"), fg="red").grid(row=3, column=0, columnspan=2)
 
 def callback_request_pic_retrieve():
-    """ Opens file browser for the user to select a picture and then check if the image is in Bitmap format """
+    """ Opens file browser for the user to select a picture and then checks the file extension """
     global PIC
     PIC = str(askopenfilename(title=_("Choose a bitmap picture (.bmp)"), filetypes=[(_('Bitmap pictures'),'.bmp')]))
     if PIC.endswith(".bmp"):
@@ -138,7 +131,7 @@ def callback_request_pic_retrieve():
         Label(FRAME, text=_("You have to choose a bitmap picture!"), fg="red").grid(row=3, column=0, columnspan=2)
 
 def callback_check():
-    """ Displays summary before decoding and ask for confirmation """
+    """ Displays summary before decoding and asks for confirmation """
     picDisp = adapt_to_gui(PIC)
     clean_frame()
     Label(FRAME, text="\n" + _("Please check the informations")).grid(row=0, column=0, columnspan=2)
@@ -152,7 +145,7 @@ def callback_check():
     Button(FRAME, text=_("Quit"), command=WIN.destroy, width=13).grid(row=7, column=1)
 
 def callback_request_string_hide():
-    """ Ask the user for a string to hide in the chosen pic """
+    """ Asks the user for a string to hide in the chosen pic """
     global STR_TO_HIDE_ENTRY
     clean_frame()
     Label(FRAME, text="\n" + _("Perfect! What do you want me")).grid(row=0, column=0, columnspan=2)
@@ -165,7 +158,7 @@ def callback_request_string_hide():
     Button(FRAME, text=_("Quit"), command=WIN.destroy, width=13).grid(row=5, column=1)
 
 def callback_get_entry():
-    """ Displays summary before decoding and ask for confirmation """
+    """ Displays summary before encoding and asks for confirmation """
     global STR_TO_HIDE
     STR_TO_HIDE = STR_TO_HIDE_ENTRY.get()
     strDisp = adapt_to_gui(STR_TO_HIDE)
@@ -187,7 +180,7 @@ def callback_get_entry():
         Label(FRAME, text=_("You have to enter something to hide!"), fg="red").grid(row=4, column=0, columnspan=2)
 
 def adapt_to_gui(string):
-    """ Function that cut a string so that string will not change the GUI height and then call adapt_width() """
+    """ Cuts a string so that it won't change the GUI height and then calls adapt_width() """
     maxLen = 170
     if len(string) >= maxLen:
         stringStart = string[:-len(string)+69]
@@ -198,7 +191,7 @@ def adapt_to_gui(string):
     return string
 
 def adapt_width(string):
-    """ Function that add line breaks to a string so that string will not change the GUI width """
+    """ Function that adds line breaks to a string so that it won't change the GUI width """
     maxLen = 30
     if len(string) >= maxLen:
         offset = 0
@@ -214,12 +207,12 @@ def adapt_width(string):
     return string
 
 def clean_frame():
-    """ Drop all the widget added in the Tkinter frame """
+    """ Drops all the widget added to the Tkinter frame """
     for widget in FRAME.winfo_children():
         widget.destroy()
 
 def write_new_bitmap_file(bytesArray):
-    """ Fonction qui sauvegarde la nouvelle image après encodage et qui affiche la dernière fenêtre de l'interface """
+    """ Saves the new image created by encoding the string inside the chosen picture """
     path = PIC[:-4] + _("_new.bmp")
     pathDisp = adapt_to_gui(path)
     newFile = open(path, "wb")
@@ -243,7 +236,7 @@ def display_result():
     Button(FRAME, text=_("Quit"), command=WIN.destroy, width=13).grid(row=4, column=1)
 
 def callback_save_string():
-    """ Save the retrieved string in a .txt texte file """
+    """ Saves the retrieved string in a .txt file """
     path = PIC + _("_string.txt")
     pathDisp = adapt_to_gui(path)
     newFile = open(path, "w")
@@ -279,7 +272,7 @@ def encode_in_bitmap():
         bmpFile.close()
 
 def put_lsb(array, offset, numberOfBits):
-    """ Stores the number of bit(s) used to encode the string at the end of the first bit (after image header) """
+    """ Stores the number of bit(s) used to encode the string at the end of the first byte (after image header) """
     newByte = ""
     for i in range(0,6):
         newByte += array[offset][i]
@@ -291,7 +284,7 @@ def put_lsb(array, offset, numberOfBits):
     return array
 
 def bits_to_dec(array):
-    """ Translates from binary to decimal values """
+    """ Translates from binary to decimal """
     byteArray = []
     for i in range(0, len(array)):
         byteArray.append(int(str(array[i]), 2))
@@ -375,7 +368,7 @@ def decode_from_bitmap():
     bmpFile.close()
 
 def find_lsb(array, offset):
-    """ Retrieve the number of bits used to encode the string, it is stored on the first byte after image header """
+    """ Retrieves the number of bits used to encode the string, it is then stored on the first byte after image header """
     if array[offset][7] == "0":
         lsb = 1
     else:
@@ -397,7 +390,7 @@ def joiner(array):
     return string
 
 def find_str(array):
-    """ Function that find characters in an array and put them together into a string """
+    """ Finds characters in an array and puts them together into a string """
     string = ""
     for i in range(0, len(array)):
         if array[i] != "\x00":

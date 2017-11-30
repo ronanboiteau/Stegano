@@ -1,7 +1,7 @@
 # Stegano
 
 Small steganography software written in Python 3 that allows you to hide text inside Bitmap (`.bmp`) images.
-Stegano is available in English, French & Spanish.
+Stegano is available in English & French.
 
 ## Getting started
 
