@@ -23,7 +23,7 @@
 #   You can also read it at <http://www.gnu.org/licenses/gpl-3.0.txt>.     #
 #                                                                          #
 #   BUG REPORT AND OTHER REQUESTS:                                         #
-#   Ronan Boiteau: <ronan@boiteau.ovh>                                     #
+#   Ronan Boiteau: <boiteauronan@gmail.com>                                #
 #   Cyprien Andres: <andres.cyprien@gmail.com>                             #
 #                                                                          #
 ############################################################################
