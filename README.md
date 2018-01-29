@@ -4,7 +4,7 @@ Small steganography software written in Python 3 that allows you to hide text in
 
 Stegano is available in English (🇺🇸) & French (🇫🇷).
 
-<img alt="Stegano demo" src="/artwork/stegano-demo.png"/>
+<img alt="Stegano demo" src="/artwork/stegano-demo.png" width="409" height="390"/>
 
 ## Getting started
 
