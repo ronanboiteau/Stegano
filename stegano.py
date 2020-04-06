@@ -19,7 +19,7 @@
 #   GNU General Public License for more details.                           #
 #                                                                          #
 #   A copy of the GNU General Public License is provided along with this   #
-#   program in the file LICENSE.txt.                                       #
+#   program in the file LICENSE.                                           #
 #   You can also read it at <http://www.gnu.org/licenses/gpl-3.0.txt>.     #
 #                                                                          #
 ############################################################################
